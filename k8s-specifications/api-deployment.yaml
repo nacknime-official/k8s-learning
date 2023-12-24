@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    app: simple-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-api
+  template:
+    metadata:
+      name: simple-api
+      labels:
+        app: simple-api
+    spec:
+      containers:
+        - name: simple-api
+          image: nacknime/k8s-simple-api:latest
+          ports:
+            - containerPort: 8080
